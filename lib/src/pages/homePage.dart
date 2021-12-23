@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:restapi_test/src/configs/appTheme.dart';
-
-import 'package:restapi_test/src/controllers/userController.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'package:restapi_test/src/configs/appColors.dart';
+import 'package:restapi_test/src/controllers/baseController.dart';
+import 'package:restapi_test/src/pages/userDetailsPage.dart';
 import 'package:restapi_test/src/widgets/kText.dart';
 
-class HomePage extends StatelessWidget {
-  final _ = Get.put(UserController(), permanent: true);
-
+class HomePage extends StatelessWidget with BaseController {
   @override
   Widget build(BuildContext context) {
-    _.getUserData();
+    userListC.getAllUserData(context);
+    resourceListC.getResourceListData(context);
+
     return Scaffold(
       drawer: Drawer(),
       appBar: AppBar(
@@ -22,71 +23,148 @@ class HomePage extends StatelessWidget {
           color: white,
         ),
       ),
-      body: ListView(
-        children: [
-          sizeBox20,
-          Container(
-            height: 85,
-            child: ListView.builder(
+      body: Obx(
+        () => ListView(
+          children: [
+            sizeBox20,
+            Container(
+              height: 85,
+              child: ListView.builder(
+                physics: BouncingScrollPhysics(),
+                primary: false,
+                shrinkWrap: true,
+                itemCount: resourceListC.resource.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (BuildContext context, int index) {
+                  final resourceList = resourceListC.resource[index];
+                  print(resourceList.id);
+                  return Padding(
+                    padding: padding10,
+                    child: Column(
+                      children: [
+                        CircleAvatar(
+                          backgroundColor:
+                              HexColor(resourceList.color as String),
+                          radius: 30,
+                          child: KText(text: '${resourceList.year}'),
+                        ),
+                        SizedBox(height: 5),
+                        KText(
+                          text: resourceList.name as String,
+                          color: black,
+                          fontSize: 12,
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+            sizeBox10,
+            ListView.builder(
               physics: BouncingScrollPhysics(),
               primary: false,
               shrinkWrap: true,
-              itemCount: 10,
-              scrollDirection: Axis.horizontal,
+              itemCount: userListC.user.length,
+              scrollDirection: Axis.vertical,
               itemBuilder: (BuildContext context, int index) {
-                return Padding(
-                  padding: padding10,
-                  child: Column(
-                    children: [
-                      CircleAvatar(
-                        backgroundColor: blueGrey,
-                        radius: 30,
-                      ),
-                      SizedBox(height: 5),
-                      KText(
-                        text: 'User $index',
-                        fontSize: 12,
-                      ),
-                    ],
-                  ),
-                );
-              },
-            ),
-          ),
-          sizeBox10,
-          ListView.builder(
-            physics: BouncingScrollPhysics(),
-            primary: false,
-            shrinkWrap: true,
-            itemCount: _.user.length,
-            scrollDirection: Axis.vertical,
-            itemBuilder: (BuildContext context, int index) {
-              final item = _.user[index];
-              print(item);
-              return Column(
-                children: [
-                  Padding(
+                final userList = userListC.user[index];
+
+                return GestureDetector(
+                  onTap: () => Get.to(UserDetailsPage(
+                    id: userList.id as int,
+                    users: userList,
+                  )),
+                  child: Padding(
                     padding: EdgeInsets.symmetric(
                       vertical: 10,
                       horizontal: 10,
                     ),
-                    child: Container(
-                      height: 200,
-                      width: Get.width,
-                      decoration: BoxDecoration(
-                        color: blueGrey,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Center(
-                        child: KText(text: 'text'),
-                      ),
-                    ),
+                    child: userListC.user.isEmpty
+                        ? Center(
+                            child: CircularProgressIndicator(),
+                          )
+                        : Container(
+                            // height: 200,
+                            width: Get.width,
+                            decoration: BoxDecoration(
+                              color: blueGrey,
+                              // color: HexColor('${item['color']}'),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: userList.id != null
+                                ? Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 10,
+                                      vertical: 10,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          child: userList.avatar != null
+                                              ? Image.network(
+                                                  userList.avatar as String,
+                                                  fit: BoxFit.fitHeight,
+                                                )
+                                              : Center(
+                                                  child:
+                                                      CircularProgressIndicator(),
+                                                ),
+                                        ),
+                                        SizedBox(width: 10),
+                                        Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                KText(
+                                                  text: userList.first_name
+                                                      as String,
+                                                  color: white,
+                                                ),
+                                                KText(
+                                                  text: userList.last_name
+                                                      as String,
+                                                  color: white,
+                                                ),
+                                              ],
+                                            ),
+                                            KText(
+                                              text: userList.email as String,
+                                              color: white,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                : Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                          ),
                   ),
-                ],
-              );
-            },
-          ),
-        ],
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          userListC.loadMoreUserData(context);
+        },
+        child: Icon(
+          Icons.restore,
+        ),
       ),
     );
   }

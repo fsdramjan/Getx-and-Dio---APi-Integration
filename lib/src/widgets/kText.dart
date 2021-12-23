@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:restapi_test/src/configs/appTheme.dart';
+import 'package:restapi_test/src/configs/appColors.dart';
 
 class KText extends StatelessWidget {
   final String text;
@@ -37,7 +37,7 @@ class KText extends StatelessWidget {
         fontSize: fontSize != null ? fontSize : 14,
         fontFamily: fontFamily != null ? fontFamily : regular,
         fontWeight: fontWeight != null ? fontWeight : FontWeight.normal,
-        color: color != null ? color : black,
+        color: color != null ? color : white,
         wordSpacing: wordSpacing,
         overflow: TextOverflow.ellipsis,
       ),

@@ -26,5 +26,5 @@ class User {
 
   Map<String, dynamic> toJson() => _$UserToJson(this);
 
-  static void addAll(List<User> userData) {}
+
 }
