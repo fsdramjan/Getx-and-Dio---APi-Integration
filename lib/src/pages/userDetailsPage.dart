@@ -79,7 +79,7 @@ class UserDetailsPage extends StatelessWidget {
                 color: black54,
               ),
               title: KText(
-                text: '${users.email}',
+                text: users.email,
                 fontSize: 18,
                 color: black,
               ),
