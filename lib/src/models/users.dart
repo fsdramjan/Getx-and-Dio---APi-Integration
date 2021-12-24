@@ -4,13 +4,13 @@ part 'users.g.dart';
 
 @JsonSerializable()
 class User {
-  int? id;
-  String? email;
+  int id;
+  String email;
   // ignore: non_constant_identifier_names
-  String? first_name;
+  String first_name;
   // ignore: non_constant_identifier_names
-  String? last_name;
-  String? avatar;
+  String last_name;
+  String avatar;
 
   User({
     required this.id,

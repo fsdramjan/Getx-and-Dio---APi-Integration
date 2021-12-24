@@ -17,7 +17,6 @@ dependencies:
   cupertino_icons: ^1.0.2
   get:
   dio:
-  cached_network_image: ^3.1.0+1
   hexcolor:
 
 dev_dependencies:

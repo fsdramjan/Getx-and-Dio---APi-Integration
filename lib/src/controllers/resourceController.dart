@@ -18,7 +18,6 @@ class ResourceController extends GetxController {
           .cast<Resource>();
 
       resource.addAll(resourceData);
-      print(resourceData);
     } catch (e) {
       print(e);
       final snackbar = SnackBar(

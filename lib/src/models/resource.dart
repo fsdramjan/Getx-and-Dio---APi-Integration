@@ -4,12 +4,12 @@ part 'resource.g.dart';
 
 @JsonSerializable()
 class Resource {
-  int? id;
-  String? name;
-  int? year;
-  String? color;
+  int id;
+  String name;
+  int year;
+  String color;
   // ignore: non_constant_identifier_names
-  String? pantone_value;
+  String pantone_value;
 
   Resource({
     required this.id,

@@ -20,11 +20,11 @@ class UserDetailsPage extends StatelessWidget {
         title: Row(
           children: [
             KText(
-              text: users.first_name as String,
+              text: users.first_name,
               fontSize: 18,
             ),
             KText(
-              text: users.last_name as String,
+              text: users.last_name,
               fontSize: 18,
             ),
           ],
@@ -37,16 +37,11 @@ class UserDetailsPage extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 60, vertical: 20),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(150),
-                child: users.avatar != null
-                    ? Image.network(
-                        users.avatar as String,
-                        fit: BoxFit.cover,
-                      )
-                    : Center(
-                        child: CircularProgressIndicator(),
-                      ),
-              ),
+                  borderRadius: BorderRadius.circular(150),
+                  child: Image.network(
+                    users.avatar,
+                    fit: BoxFit.cover,
+                  )),
             ),
             ListTile(
               leading: KText(
@@ -58,12 +53,12 @@ class UserDetailsPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   KText(
-                    text: users.first_name as String,
+                    text: users.first_name,
                     fontSize: 18,
                     color: black,
                   ),
                   KText(
-                    text: users.last_name as String,
+                    text: users.last_name,
                     fontSize: 18,
                     color: black,
                   ),
