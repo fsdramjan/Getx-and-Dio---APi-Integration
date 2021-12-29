@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:restapi_test/src/configs/appTheme.dart';
-import 'package:restapi_test/src/pages/homePage.dart';
+import 'package:restapi_test/src/pages/bottomBarHome.dart';
+import 'package:restapi_test/src/pages/loginPage.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -12,7 +13,8 @@ class App extends StatelessWidget {
       smartManagement: SmartManagement.onlyBuilder,
       theme: AppTheme.appTheme,
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: LoginPage(),
+      // home: BottomBarHome(),
     );
   }
 }

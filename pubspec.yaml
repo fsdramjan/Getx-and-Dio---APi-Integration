@@ -17,8 +17,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   get:
   dio:
+  uuid:
   hexcolor:
-  search_page: 
+  fluttertoast:
 
 dev_dependencies:
   flutter_test:

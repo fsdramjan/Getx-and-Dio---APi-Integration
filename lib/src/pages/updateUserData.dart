@@ -44,7 +44,7 @@ class _UpdateUserDataPageState extends State<UpdateUserDataPage>
     return Scaffold(
       appBar: AppBar(
         title: KText(
-          text: widget.id != null ? 'Update User Info' : 'Add User Info',
+          text: 'Update User Info',
           fontSize: 18,
         ),
       ),

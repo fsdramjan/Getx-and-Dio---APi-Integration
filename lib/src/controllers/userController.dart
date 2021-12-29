@@ -1,11 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:restapi_test/src/configs/appColors.dart';
 import 'package:restapi_test/src/configs/appConfig.dart';
 import 'package:restapi_test/src/models/users.dart';
-import 'package:restapi_test/src/pages/homePage.dart';
+import 'package:restapi_test/src/pages/bottomBarHome.dart';
 import 'package:restapi_test/src/widgets/kText.dart';
+import 'package:uuid/uuid.dart';
 
 class UserController extends GetxController {
   final _dio = Dio();
@@ -70,33 +72,40 @@ class UserController extends GetxController {
     }
   }
 
-  void addNewUserData({required int id}) async {
+  void addNewUserData() async {
     try {
-      final res = await _dio.post('$baseUrl/users/$id', data: {
-        'id': id,
+      final res = await _dio.post('$baseUrl/users', data: {
+        'id': Uuid().v4(),
         'email': email.value,
         'first_name': firstName.value,
         'last_name': lastName.value,
       });
 
-      if (res.statusCode == 200) {
-        Get.defaultDialog(
-          title: 'success',
-          content: KText(
-            text: 'user $id added',
-            color: black,
-          ),
+      if (res.statusCode == 201) {
+        Fluttertoast.showToast(
+          msg: "please full fill all field",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
         );
-
-        print(res.data);
-
+        // Get.defaultDialog(
+        //   title: 'success',
+        //   content: KText(
+        //     text: 'user added',
+        //     color: black,
+        //   ),
+        // );
         await Future.delayed(Duration(seconds: 1));
 
-        await Get.to(HomePage());
-
+        Get.offAll(BottomBarHome());
         return res.data;
+
+        // Get.add;
       } else {
-        throw Exception('Please full fill all field');
+        throw Exception('Please correct the Status Code');
       }
     } catch (e) {
       print(e);
@@ -125,7 +134,7 @@ class UserController extends GetxController {
 
         await Future.delayed(Duration(seconds: 1));
 
-        await Get.to(HomePage());
+        await Get.offAll(BottomBarHome());
 
         return res.data;
       } else {
