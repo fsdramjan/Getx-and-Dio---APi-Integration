@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:restapi_test/src/configs/appColors.dart';
 import 'package:restapi_test/src/configs/appConfig.dart';
@@ -82,28 +81,28 @@ class UserController extends GetxController {
       });
 
       if (res.statusCode == 201) {
-        Fluttertoast.showToast(
-          msg: "please full fill all field",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 16.0,
-        );
-        // Get.defaultDialog(
-        //   title: 'success',
-        //   content: KText(
-        //     text: 'user added',
-        //     color: black,
-        //   ),
+        // Fluttertoast.showToast(
+        //   msg: "please full fill all field",
+        //   toastLength: Toast.LENGTH_SHORT,
+        //   gravity: ToastGravity.CENTER,
+        //   timeInSecForIosWeb: 1,
+        //   backgroundColor: Colors.red,
+        //   textColor: Colors.white,
+        //   fontSize: 16.0,
         // );
+        Get.defaultDialog(
+          title: 'success',
+          content: KText(
+            text: 'user added',
+            color: black,
+          ),
+        );
         await Future.delayed(Duration(seconds: 1));
 
         Get.offAll(BottomBarHome());
         return res.data;
 
-        // Get.add;
+    
       } else {
         throw Exception('Please correct the Status Code');
       }

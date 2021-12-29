@@ -52,83 +52,78 @@ class _UpdateUserDataPageState extends State<UpdateUserDataPage>
         key: _formKey,
         child: Padding(
           padding: padding10,
-          child: Expanded(
-            child: ListView(
-              children: [
-                SizedBox(height: 100),
-                kTextFormField(
-                  controller: emailController,
-                  onChanged: userListC.email,
-                  // validator: (value) {
-                  //   if (value == null) {
-                  //     return 'Please enter email';
-                  //   }
-                  //   return '';
-                  // },
-                  color: blueGrey,
-                  errorText:
-                      widget.users.email.isEmpty ? 'Please enter eamil' : '',
-                  hintText: 'email',
-                ),
-                sizeBox10,
-                kTextFormField(
-                  controller: firstNameController,
-                  onChanged: userListC.firstName,
-                  // validator: (value) {
-                  //   if (value == null) {
-                  //     return 'Please enter  first name';
-                  //   }
-                  //   return '';
-                  // },
-                  errorText: widget.users.first_name.isEmpty
-                      ? 'Please enter  first name'
-                      : '',
-                  color: blueGrey,
-
-                  hintText: ' first name',
-                ),
-                sizeBox10,
-                kTextFormField(
-                  controller: lastNameController,
-                  onChanged: userListC.lastName,
-                  // validator: (value) {
-                  //   if (value == null) {
-                  //     return 'Please enter  last name';
-                  //   }
-                  //   return '';
-                  // },
-                  color: blueGrey,
-                  errorText: widget.users.last_name.isEmpty
-                      ? 'Please enter  last name'
-                      : '',
-                  hintText: ' last name',
-                ),
-                sizeBox10,
-                GestureDetector(
-                  onTap: () {
-                    if (_formKey.currentState!.validate()) {
-                      print(widget.id);
-                      userListC.updateUserData(id: widget.id);
-                    }
-                  },
-                  child: Container(
-                    height: 45,
-                    width: Get.width,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: blueGrey,
-                    ),
-                    child: Center(
-                      child: KText(
-                        text: 'Add',
-                        fontFamily: medium,
-                        fontSize: 16,
-                      ),
+          child: ListView(
+            children: [
+              SizedBox(height: 100),
+              kTextFormField(
+                controller: emailController,
+                onChanged: userListC.email,
+                validator: (value) {
+                  if (value == null) {
+                    return 'Please enter email';
+                  }
+                  return '';
+                },
+                color: blueGrey,
+               
+                hintText: 'email',
+              ),
+              sizeBox10,
+              kTextFormField(
+                controller: firstNameController,
+                onChanged: userListC.firstName,
+                validator: (value) {
+                  if (value == null) {
+                    return 'Please enter  first name';
+                  }
+                  return '';
+                },
+                
+                color: blueGrey,
+                hintText: ' first name',
+              ),
+              sizeBox10,
+              kTextFormField(
+                controller: lastNameController,
+                onChanged: userListC.lastName,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter  last name';
+                  }
+                  return '';
+                },
+                color: blueGrey,
+              
+                hintText: ' last name',
+              ),
+              sizeBox10,
+              GestureDetector(
+                onTap: () {
+                  if (_formKey.currentState!.validate() ||
+                      userListC.email.isNotEmpty ||
+                      userListC.firstName.isNotEmpty ||
+                      userListC.lastName.isNotEmpty) {
+                    print(widget.id);
+                    userListC.updateUserData(id: widget.id);
+                  }
+                },
+                child: Container(
+                  height: 45,
+                  width: Get.width,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: blueGrey,
+                  ),
+                  child: Center(
+                    child: KText(
+                      text: 'Add',
+                      fontFamily: medium,
+                      fontSize: 16,
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
@@ -137,16 +132,16 @@ class _UpdateUserDataPageState extends State<UpdateUserDataPage>
 
   Widget kTextFormField({
     required final String hintText,
-    required final String errorText,
+    // required final String errorText,
     required final Color color,
     required final TextEditingController controller,
     required final void Function(String)? onChanged,
-    // required final String? Function(String?) validator,
+    required final String? Function(String?) validator,
   }) {
     return TextFormField(
       controller: controller,
       onChanged: onChanged,
-      // validator: validator,
+      validator: validator,
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: color),
@@ -160,7 +155,7 @@ class _UpdateUserDataPageState extends State<UpdateUserDataPage>
         focusedErrorBorder: OutlineInputBorder(
           borderSide: BorderSide(color: red),
         ),
-        errorText: errorText,
+        // errorText: errorText,
         hintText: hintText,
       ),
     );

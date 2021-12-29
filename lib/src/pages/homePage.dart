@@ -1,7 +1,9 @@
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:restapi_test/src/configs/appColors.dart';
 import 'package:restapi_test/src/controllers/baseController.dart';
+import 'package:restapi_test/src/pages/searchPage.dart';
 import 'package:restapi_test/src/pages/updateUserData.dart';
 import 'package:restapi_test/src/pages/userDetailsPage.dart';
 import 'package:restapi_test/src/widgets/kText.dart';
@@ -32,22 +34,23 @@ class _HomePageState extends State<HomePage> with BaseController {
     resourceListC.getResourceListData(context);
 
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: blueGrey,
-      //   title: KText(
-      //     text: 'Home Page',
-      //     fontSize: 18,
-      //     color: white,
-      //   ),
-      //   actions: [
-      //     IconButton(
-      //       onPressed: () => Get.to(SearchUserPage()),
-      //       icon: Icon(
-      //         Icons.search,
-      //       ),
-      //     ),
-      //   ],
-      // ),
+      drawer: Drawer(),
+      appBar: AppBar(
+        backgroundColor: blueGrey,
+        title: KText(
+          text: 'Home Page',
+          fontSize: 18,
+          color: white,
+        ),
+        actions: [
+          IconButton(
+            onPressed: () => Get.to(SearchUserPage()),
+            icon: Icon(
+              Icons.search,
+            ),
+          ),
+        ],
+      ),
       body: Obx(
         () => userListC.user.isEmpty
             ? Center(child: CircularProgressIndicator())

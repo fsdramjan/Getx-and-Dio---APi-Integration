@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:restapi_test/src/configs/appColors.dart';
 import 'package:restapi_test/src/pages/addUserInfoPage.dart';
 import 'package:restapi_test/src/pages/homePage.dart';
+import 'package:restapi_test/src/pages/profilePage.dart';
 import 'package:restapi_test/src/pages/searchPage.dart';
 
 class BottomBarHome extends StatefulWidget {
@@ -120,7 +121,7 @@ class _BottomBarHomeState extends State<BottomBarHome> {
                   MaterialButton(
                     onPressed: () {
                       setState(() {
-                        _currentScreens = HomePage();
+                        _currentScreens = ProfilePage();
                         _currentTab = 3;
                       });
                     },

@@ -20,7 +20,7 @@ class LoginSignUpController extends GetxController {
       if (res.statusCode == 200) {
         Get.snackbar(
           'Success',
-          'Login Success',
+          'Login Success  ${res.data}',
           backgroundColor: blueGrey,
           colorText: white,
         );
@@ -53,16 +53,17 @@ class LoginSignUpController extends GetxController {
         'email': email.value,
         'password': password.value,
       });
+
       if (res.statusCode == 200) {
         Get.snackbar(
           'Success',
-          'Registration Success',
+          'Registration Success ${res.data}',
           backgroundColor: blueGrey,
           colorText: white,
         );
 
         print(res.data);
-        print('User Registration success');
+        print('User Registration success ');
         Get.to(BottomBarHome());
 
         return res.data;

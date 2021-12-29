@@ -13,6 +13,7 @@ class SearchUserPage extends StatelessWidget with BaseController {
 
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: InkWell(onTap: () {}, child: searchBar(context)),
       ),
       body: Padding(

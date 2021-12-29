@@ -13,13 +13,7 @@ late Color pinkAncent = HexColor('#f7c9c9');
 late Color blueAncent = HexColor('#6fb1d3');
 const Color red = Color(0xffff1744);
 
-//
-const double fontsize14 = 14;
-const double fontsize16 = 16;
-const double fontsize20 = 20;
-const double fontsize30 = 30;
 
-//
 
 const SizedBox sizeBox10 = SizedBox(height: 10);
 const SizedBox sizeBox20 = SizedBox(height: 20);
