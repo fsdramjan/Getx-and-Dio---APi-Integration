@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:restapi_test/src/configs/appColors.dart';
+import 'package:restapi_test/src/controllers/baseController.dart';
 import 'package:restapi_test/src/models/users.dart';
+import 'package:restapi_test/src/pages/updateUserData.dart';
 import 'package:restapi_test/src/widgets/kText.dart';
 
-class UserDetailsPage extends StatelessWidget {
+class UserDetailsPage extends StatelessWidget with BaseController {
   final int id;
   final User users;
 
@@ -29,6 +32,22 @@ class UserDetailsPage extends StatelessWidget {
             ),
           ],
         ),
+        actions: [
+          TextButton.icon(
+            onPressed: () => Get.to(UpdateUserDataPage(
+              id: users.id,
+              users: users,
+            )),
+            icon: Icon(
+              Icons.edit,
+              color: white,
+              size: 15,
+            ),
+            label: KText(
+              text: 'Edit',
+            ),
+          ),
+        ],
       ),
       body: Padding(
         padding: padding10,
@@ -64,13 +83,13 @@ class UserDetailsPage extends StatelessWidget {
                   ),
                 ],
               ),
-              trailing: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.edit,
-                  size: 15,
-                ),
-              ),
+              // trailing: IconButton(
+              //   onPressed: () => Get.to(UpdateUserDataPage()),
+              //   icon: Icon(
+              //     Icons.edit,
+              //     size: 15,
+              //   ),
+              // ),
             ),
             ListTile(
               leading: KText(
@@ -83,13 +102,13 @@ class UserDetailsPage extends StatelessWidget {
                 fontSize: 18,
                 color: black,
               ),
-              trailing: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.edit,
-                  size: 15,
-                ),
-              ),
+              // trailing: IconButton(
+              //   onPressed: () {},
+              //   icon: Icon(
+              //     Icons.edit,
+              //     size: 15,
+              //   ),
+              // ),
             )
           ],
         ),

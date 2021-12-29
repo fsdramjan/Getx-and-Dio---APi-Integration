@@ -18,6 +18,7 @@ dependencies:
   get:
   dio:
   hexcolor:
+  search_page: 
 
 dev_dependencies:
   flutter_test:
@@ -26,13 +27,13 @@ dev_dependencies:
   json_serializable: 
 
 
+
 flutter:
   uses-material-design: true
 
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
-
 
 
   fonts:

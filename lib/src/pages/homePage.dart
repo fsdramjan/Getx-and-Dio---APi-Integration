@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:restapi_test/src/pages/searchPage.dart';
 import 'package:restapi_test/src/configs/appColors.dart';
 import 'package:restapi_test/src/controllers/baseController.dart';
+import 'package:restapi_test/src/pages/updateUserData.dart';
 import 'package:restapi_test/src/pages/userDetailsPage.dart';
 import 'package:restapi_test/src/widgets/kText.dart';
 
@@ -34,12 +36,25 @@ class _HomePageState extends State<HomePage> with BaseController {
       drawer: Drawer(),
       appBar: AppBar(
         backgroundColor: blueGrey,
-        // centerTitle: true,
         title: KText(
-          text: 'Getx and Dio (Fsd Ramjan)',
+          text: 'Getx and Dio',
           fontSize: 18,
           color: white,
         ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.add,
+            ),
+          ),
+          IconButton(
+            onPressed: () => Get.to(SearchUserPage()),
+            icon: Icon(
+              Icons.search,
+            ),
+          ),
+        ],
       ),
       body: Obx(
         () => userListC.user.isEmpty
@@ -115,12 +130,50 @@ class _HomePageState extends State<HomePage> with BaseController {
                                         KText(
                                           text: userList.email,
                                           color: white,
+                                          fontSize: 12,
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(width: 10),
+                                    Column(
+                                      children: [
+                                        IconButton(
+                                          onPressed: () {
+                                            userListC.deleteSingleUserData(
+                                              context,
+                                              id: userList.id,
+                                            );
+                                          },
+                                          icon: Align(
+                                            alignment: Alignment.centerRight,
+                                            child: Icon(
+                                              Icons.delete,
+                                              size: 25,
+                                              color: white,
+                                            ),
+                                          ),
+                                        ),
+                                        IconButton(
+                                          onPressed: () {
+                                            Get.to(UpdateUserDataPage(
+                                                id: userList.id,
+                                                users: userList));
+                                          },
+                                          icon: Align(
+                                            alignment: Alignment.centerRight,
+                                            child: Icon(
+                                              Icons.edit,
+                                              size: 25,
+                                              color: white,
+                                            ),
+                                          ),
                                         ),
                                       ],
                                     ),
                                   ],
                                 ),
-                              )),
+                              ),
+                            ),
                     ),
                   );
                 },
@@ -137,36 +190,36 @@ class _HomePageState extends State<HomePage> with BaseController {
     );
   }
 }
- // sizeBox20,
-                    // Container(
-                    //   height: 85,
-                    //   child: ListView.builder(
-                    //     physics: BouncingScrollPhysics(),
-                    //     primary: false,
-                    //     shrinkWrap: true,
-                    //     itemCount: resourceListC.resource.length,
-                    //     scrollDirection: Axis.horizontal,
-                    //     itemBuilder: (BuildContext context, int index) {
-                    //       final resourceList = resourceListC.resource[index];
-                    //       return Padding(
-                    //         padding: padding10,
-                    //         child: Column(
-                    //           children: [
-                    //             CircleAvatar(
-                    //               backgroundColor: HexColor(resourceList.color),
-                    //               radius: 30,
-                    //               child: KText(text: '${resourceList.year}'),
-                    //             ),
-                    //             SizedBox(height: 5),
-                    //             KText(
-                    //               text: resourceList.name,
-                    //               color: black,
-                    //               fontSize: 12,
-                    //             ),
-                    //           ],
-                    //         ),
-                    //       );
-                    //     },
-                    //   ),
-                    // ),
-                    // sizeBox10,
+// sizeBox20,
+// Container(
+//   height: 85,
+//   child: ListView.builder(
+//     physics: BouncingScrollPhysics(),
+//     primary: false,
+//     shrinkWrap: true,
+//     itemCount: resourceListC.resource.length,
+//     scrollDirection: Axis.horizontal,
+//     itemBuilder: (BuildContext context, int index) {
+//       final resourceList = resourceListC.resource[index];
+//       return Padding(
+//         padding: padding10,
+//         child: Column(
+//           children: [
+//             CircleAvatar(
+//               backgroundColor: HexColor(resourceList.color),
+//               radius: 30,
+//               child: KText(text: '${resourceList.year}'),
+//             ),
+//             SizedBox(height: 5),
+//             KText(
+//               text: resourceList.name,
+//               color: black,
+//               fontSize: 12,
+//             ),
+//           ],
+//         ),
+//       );
+//     },
+//   ),
+// ),
+// sizeBox10,
