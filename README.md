@@ -11,16 +11,22 @@ Click this image to find videos==>
 
 
 //Crud Method
+
+
 Home Page :
+
 <img src="https://i.ibb.co/pvS81zk/image.png" alt="image" border="0">
 
 Update Data :
+
 <img src="https://i.ibb.co/DCBBpWZ/image.png" alt="image" border="0">
 
 Delete Data:
+
 <img src="https://i.ibb.co/b112hky/image.png" alt="image" border="0">
 
 Add Data :
+
 <img src="https://i.ibb.co/PQCDHYb/image.png" alt="image" border="0">
 
 //
