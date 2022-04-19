@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wellness_republic/src/configs/appUtils.dart';
+import 'package:wellness_republic/src/pages/loginSignup/registerAsCustomerPage.dart';
 import 'package:wellness_republic/src/widgets/containerButton/customGradientButton.dart';
-import 'package:wellness_republic/src/widgets/formField/customPassWordFieldWidget.dart';
-import 'package:wellness_republic/src/widgets/formField/customPhoneFormFieldWidget.dart';
+import 'package:wellness_republic/src/widgets/formField/passWordFieldWidget.dart';
+import 'package:wellness_republic/src/widgets/formField/phoneFormFieldWidget.dart';
 import 'package:wellness_republic/src/widgets/textWidget/kText.dart';
 
 import '../../configs/appColors.dart';
+import '../../configs/appConfigs.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -50,8 +52,9 @@ class _LoginPageState extends State<LoginPage> {
                     controller: phoneTextC,
                   ),
                   sizeH30,
-                  CustomPasswordFormFieldWidget(
-                    controller: passwordTextC,  
+                  PasswordFormFieldWidget(
+                    controller: passwordTextC,
+                    hintText: 'Password',
                   ),
                   sizeH30,
                   customGradientButton(
@@ -89,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                         fontWeight: FontWeight.w700,
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () => Get.to(RegisterAsCustomerPage()),
                         child: KText(
                           text: 'Sign up',
                           color: orangePrimary,
@@ -111,24 +114,20 @@ class _LoginPageState extends State<LoginPage> {
   _loginImage() => Stack(
         children: [
           Image.network(
-            'http://162.213.250.22:3003/public/uploads/adminPortal/22022/image-2022-03-04T02-34-50.542Z.jpeg',
+            loginImage,
             height: 280,
             width: Get.width,
             fit: BoxFit.cover,
           ),
           Positioned(
-            top: 50,
+            top: 60,
             left: -10,
-            child: IconButton(
-              onPressed: () {},
-              icon: Container(
-                height: 70,
-                width: 70,
-                color: black26,
-                child: Icon(
-                  Icons.arrow_back,
-                  color: white54,
-                ),
+            child: Container(
+              height: 40,
+              width: 50,
+              color: black26,
+              child: Icon(
+                Icons.arrow_back,
               ),
             ),
           ),

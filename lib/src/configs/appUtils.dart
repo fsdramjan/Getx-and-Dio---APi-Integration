@@ -11,14 +11,14 @@ final sizeH40 = SizedBox(height: 40);
 final sizeH50 = SizedBox(height: 50);
 
 //SizeBox for Width
-final sizeW5 = SizedBox(height: 5);
-final sizeW10 = SizedBox(height: 10);
-final sizeW15 = SizedBox(height: 15);
-final sizeW20 = SizedBox(height: 20);
-final sizeW25 = SizedBox(height: 25);
-final sizeW30 = SizedBox(height: 30);
-final sizeW40 = SizedBox(height: 40);
-final sizeW50 = SizedBox(height: 50);
+final sizeW5 = SizedBox(width: 5);
+final sizeW10 = SizedBox(width: 10);
+final sizeW15 = SizedBox(width: 15);
+final sizeW20 = SizedBox(width: 20);
+final sizeW25 = SizedBox(width: 25);
+final sizeW30 = SizedBox(width: 30);
+final sizeW40 = SizedBox(width: 40);
+final sizeW50 = SizedBox(width: 50);
 
 //for padding
 

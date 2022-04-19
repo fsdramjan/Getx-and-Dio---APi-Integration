@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 import '../../configs/appColors.dart';
 import '../../configs/appUtils.dart';
 
-class CustomPasswordFormFieldWidget extends StatefulWidget {
+class PasswordFormFieldWidget extends StatefulWidget {
   final TextEditingController controller;
+  final String hintText;
 
-  CustomPasswordFormFieldWidget({
+  PasswordFormFieldWidget({
     required this.controller,
+    required this.hintText,
   });
 
   @override
-  State<CustomPasswordFormFieldWidget> createState() =>
-      _CustomPasswordFormFieldWidgetState();
+  State<PasswordFormFieldWidget> createState() =>
+      _PasswordFormFieldWidgetState();
 }
 
-class _CustomPasswordFormFieldWidgetState
-    extends State<CustomPasswordFormFieldWidget> {
+class _PasswordFormFieldWidgetState extends State<PasswordFormFieldWidget> {
   bool? isShowPassword = false;
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,7 @@ class _CustomPasswordFormFieldWidgetState
 
           border: InputBorder.none,
 
-          hintText: 'Password',
+          hintText: widget.hintText,
 
           hintStyle: TextStyle(
             color: white24,
@@ -58,7 +59,7 @@ class _CustomPasswordFormFieldWidgetState
               print(isShowPassword);
             },
             icon: Icon(
-              isShowPassword == true
+              isShowPassword != true
                   ? Icons.remove_red_eye
                   : Icons.remove_red_eye_outlined,
               size: 20,

@@ -12,6 +12,7 @@ final white24 = Colors.white24;
 final white38 = Colors.white38;
 final white54 = Colors.white54;
 final orangePrimary = Color(0xffCBA769);
+final orangePrimary50 = Color(0xffCBB287);
 final transparent = Colors.transparent;
 
 const redAccent = Colors.redAccent;

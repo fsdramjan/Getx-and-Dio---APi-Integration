@@ -10,6 +10,7 @@ customGradientButton({
   required void Function() onTap,
   double? height,
   double? width,
+  double? textSize,
 }) {
   return GestureDetector(
     onTap: onTap,
@@ -34,7 +35,7 @@ customGradientButton({
         text: title,
         fontWeight: FontWeight.w700,
         color: Colors.black87,
-        fontSize: 17,
+        fontSize: textSize != null ? textSize : 17,
       ),
     ),
   );
