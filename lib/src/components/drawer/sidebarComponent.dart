@@ -90,7 +90,7 @@ class SidebarComponent extends StatelessWidget {
                 primary: false,
                 children: [
                   Row(
-                    
+
                     children: [
                       Container(
                         decoration: BoxDecoration(
@@ -102,7 +102,7 @@ class SidebarComponent extends StatelessWidget {
                         child: Padding(
                           padding: EdgeInsets.all(4),
                           child: Icon(
-                            Icons.call,
+                            Icons.tag,
                             color: white,
                             size: 15,
                           ),
@@ -110,7 +110,7 @@ class SidebarComponent extends StatelessWidget {
                       ),
                       sizeW10,
                       KText(
-                        text: '+8801910583753',
+                        text: 'FAQ',
                         fontSize: 14,
                         color: orangePrimary,
                       ),
