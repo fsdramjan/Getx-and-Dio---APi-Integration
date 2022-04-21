@@ -90,6 +90,7 @@ class SidebarComponent extends StatelessWidget {
                 primary: false,
                 children: [
                   Row(
+                    
                     children: [
                       Container(
                         decoration: BoxDecoration(
