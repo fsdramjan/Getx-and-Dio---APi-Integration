@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wellness_republic/src/configs/appUtils.dart';
+import 'package:wellness_republic/src/pages/home/homePage.dart';
+import 'package:wellness_republic/src/pages/loginSignup/chooseRegisterPage.dart';
 import 'package:wellness_republic/src/pages/loginSignup/registerAsCustomerPage.dart';
 import 'package:wellness_republic/src/widgets/containerButton/customGradientButton.dart';
 import 'package:wellness_republic/src/widgets/formField/passWordFieldWidget.dart';
@@ -59,16 +61,17 @@ class _LoginPageState extends State<LoginPage> {
                   sizeH30,
                   customGradientButton(
                     onTap: () {
-                      if (phoneTextC.text.isEmpty ||
-                          passwordTextC.text.isEmpty) {
-                        Get.snackbar(
-                          'Opps!',
-                          'Field Empty',
-                          backgroundColor: redAccent,
-                          colorText: white,
-                          snackPosition: SnackPosition.BOTTOM,
-                        );
-                      }
+                      Get.to(HomePage());
+                      // if (phoneTextC.text.isEmpty ||
+                      //     passwordTextC.text.isEmpty) {
+                      //   Get.snackbar(
+                      //     'Opps!',
+                      //     'Field Empty',
+                      //     backgroundColor: redAccent,
+                      //     colorText: white,
+                      //     snackPosition: SnackPosition.BOTTOM,
+                      //   );
+                      // }
                     },
                     title: 'Login',
                   ),
@@ -92,7 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                         fontWeight: FontWeight.w700,
                       ),
                       TextButton(
-                        onPressed: () => Get.to(RegisterAsCustomerPage()),
+                        onPressed: () => Get.to(ChooseRegisterPage()),
                         child: KText(
                           text: 'Sign up',
                           color: orangePrimary,
