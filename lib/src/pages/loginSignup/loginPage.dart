@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:wellness_republic/src/configs/appUtils.dart';
 import 'package:wellness_republic/src/pages/home/homePage.dart';
 import 'package:wellness_republic/src/pages/loginSignup/chooseRegisterPage.dart';
-import 'package:wellness_republic/src/pages/loginSignup/registerAsCustomerPage.dart';
 import 'package:wellness_republic/src/widgets/containerButton/customGradientButton.dart';
 import 'package:wellness_republic/src/widgets/formField/passWordFieldWidget.dart';
 import 'package:wellness_republic/src/widgets/formField/phoneFormFieldWidget.dart';

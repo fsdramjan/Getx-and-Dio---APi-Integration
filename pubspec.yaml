@@ -17,7 +17,7 @@ dependencies:
     
   get:
   hexcolor:
-
+  flutter_svg: ^1.0.3
   
   cupertino_icons: ^1.0.2
 
